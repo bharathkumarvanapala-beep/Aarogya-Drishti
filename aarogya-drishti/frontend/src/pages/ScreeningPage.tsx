@@ -1,21 +1,21 @@
 import { api } from '../services/api';
 import React, { useState } from 'react';
-import { 
-  Camera, 
-  Upload, 
-  CheckCircle2, 
-  AlertTriangle, 
-  AlertCircle, 
-  FileText, 
-  RefreshCw, 
-  ArrowRight, 
-  ArrowLeft, 
-  ShieldCheck, 
-  Info, 
-  Download, 
-  Eye, 
-  UserCheck, 
-  Check, 
+import {
+  Camera,
+  Upload,
+  CheckCircle2,
+  AlertTriangle,
+  AlertCircle,
+  FileText,
+  RefreshCw,
+  ArrowRight,
+  ArrowLeft,
+  ShieldCheck,
+  Info,
+  Download,
+  Eye,
+  UserCheck,
+  Check,
   X,
   Stethoscope,
   Activity,
@@ -226,7 +226,7 @@ export const ScreeningPage: React.FC<ScreeningPageProps> = ({ onNavigate, langua
 
   return (
     <div className="min-h-screen bg-[#F5FAFA] pb-24">
-      
+
       <DisclaimerBanner />
 
       {/* Header */}
@@ -256,13 +256,12 @@ export const ScreeningPage: React.FC<ScreeningPageProps> = ({ onNavigate, langua
                       setCurrentStep(step);
                     }
                   }}
-                  className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    currentStep === step
+                  className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${currentStep === step
                       ? 'bg-[#087F8C] text-white shadow-xs'
                       : currentStep > step
-                      ? 'bg-[#E8F5E9] text-[#237A57]'
-                      : 'text-[#647681]'
-                  }`}
+                        ? 'bg-[#E8F5E9] text-[#237A57]'
+                        : 'text-[#647681]'
+                    }`}
                 >
                   <span>Step {step}</span>
                   {currentStep > step && <Check className="w-3 h-3" />}
@@ -275,7 +274,7 @@ export const ScreeningPage: React.FC<ScreeningPageProps> = ({ onNavigate, langua
 
       {/* Main Workflow Container */}
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        
+
         {/* STEP 1: Patient Information */}
         {currentStep === 1 && (
           <div className="space-y-6 animate-fadeIn">
@@ -291,7 +290,7 @@ export const ScreeningPage: React.FC<ScreeningPageProps> = ({ onNavigate, langua
               </div>
 
               <div className="space-y-6">
-                
+
                 {/* Reference ID & Age */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -342,11 +341,10 @@ export const ScreeningPage: React.FC<ScreeningPageProps> = ({ onNavigate, langua
                       return (
                         <label
                           key={symptom}
-                          className={`flex items-start gap-2.5 p-3 rounded-xl border text-xs font-medium cursor-pointer transition-all ${
-                            isChecked
+                          className={`flex items-start gap-2.5 p-3 rounded-xl border text-xs font-medium cursor-pointer transition-all ${isChecked
                               ? 'bg-[#E6F4F6] border-[#087F8C] text-[#075B66]'
                               : 'bg-white border-[#DCE8E9] text-[#18313B] hover:bg-[#F5FAFA]'
-                          }`}
+                            }`}
                         >
                           <input
                             type="checkbox"
@@ -462,7 +460,7 @@ export const ScreeningPage: React.FC<ScreeningPageProps> = ({ onNavigate, langua
 
               {/* Image Upload Area & Camera Preview */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-                
+
                 {/* Upload or Camera input */}
                 <div className="space-y-4">
                   <div className="border-2 border-dashed border-[#DCE8E9] rounded-2xl p-6 text-center hover:border-[#087F8C] transition-colors bg-white">
@@ -471,7 +469,7 @@ export const ScreeningPage: React.FC<ScreeningPageProps> = ({ onNavigate, langua
                     </div>
                     <p className="text-sm font-bold text-[#18313B]">Take Photo with Device Camera or Upload</p>
                     <p className="text-xs text-[#647681] mt-1 mb-4">Supports JPEG, PNG, WEBP (Max 15MB)</p>
-                    
+
                     <div className="flex justify-center gap-3">
                       <label className="inline-flex items-center justify-center px-4 py-2 bg-[#087F8C] hover:bg-[#075B66] text-white text-xs font-bold rounded-lg cursor-pointer shadow-sm transition-all">
                         <Upload className="w-3.5 h-3.5 mr-1.5" /> Select Local File
@@ -497,11 +495,10 @@ export const ScreeningPage: React.FC<ScreeningPageProps> = ({ onNavigate, langua
                           key={idx}
                           type="button"
                           onClick={() => handleSelectSample(s)}
-                          className={`w-full text-left p-2.5 rounded-xl border text-xs flex items-center justify-between transition-all ${
-                            selectedImage === s.url
+                          className={`w-full text-left p-2.5 rounded-xl border text-xs flex items-center justify-between transition-all ${selectedImage === s.url
                               ? 'bg-[#E6F4F6] border-[#087F8C] font-semibold text-[#075B66]'
                               : 'bg-white border-[#DCE8E9] hover:bg-[#F5FAFA] text-[#18313B]'
-                          }`}
+                            }`}
                         >
                           <span className="truncate">{s.name}</span>
                           <span className="shrink-0 px-2 py-0.5 rounded text-[10px] font-bold bg-white/70 border border-[#DCE8E9]">
@@ -523,7 +520,7 @@ export const ScreeningPage: React.FC<ScreeningPageProps> = ({ onNavigate, langua
                           alt="Oral cavity capture preview"
                           className="w-full h-full object-cover rounded-xl"
                         />
-                        
+
                         {/* Interactive Inspection Overlays */}
                         {inspectionMode === 'heatmap' && (
                           <div className="absolute inset-0 bg-radial-at-c from-red-500/40 via-yellow-500/20 to-transparent pointer-events-none border-2 border-red-500/80 m-6 rounded-xl flex items-center justify-center">
@@ -717,10 +714,10 @@ export const ScreeningPage: React.FC<ScreeningPageProps> = ({ onNavigate, langua
         {/* STEP 4: Screening Results Dashboard */}
         {currentStep === 4 && screeningResult && (
           <div className="space-y-6 animate-fadeIn">
-            
+
             {/* Top result card */}
             <Card className="p-6 sm:p-8 border-t-8 border-t-[#087F8C]">
-              
+
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-[#DCE8E9]">
                 <div>
                   <div className="flex items-center gap-2">
@@ -951,7 +948,7 @@ export const ScreeningPage: React.FC<ScreeningPageProps> = ({ onNavigate, langua
         {currentStep === 6 && screeningResult && (
           <div className="space-y-6 animate-fadeIn">
             <Card className="p-8 sm:p-12 border border-[#DCE8E9] bg-white shadow-lg print:shadow-none">
-              
+
               {/* Report Header */}
               <div className="border-b-2 border-[#087F8C] pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div className="flex items-center gap-3">

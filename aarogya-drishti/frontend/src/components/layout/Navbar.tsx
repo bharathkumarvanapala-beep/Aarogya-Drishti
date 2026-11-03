@@ -30,7 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               AAROGYA DRISHTI CONNECTED CARE
             </span>
             <span className="hidden md:inline text-white/70">
-              | In Partnership with Govt. Dental Colleges & Regional Cancer Centres
+              | AI Oral Health & Mouth Cancer Screening Platform
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -57,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <Menu className="w-6 h-6 text-[#414146]" />
               </button>
 
-              {/* Aarogya Drishti Brand Identity Only */}
+              {/* Aarogya Drishti Brand Identity */}
               <button
                 onClick={() => onNavigate('home')}
                 className="flex items-center gap-2.5 text-left focus:outline-none group"
@@ -71,12 +71,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                     Aarogya Drishti
                   </span>
                   <p className="text-[10px] text-[#787887] font-semibold tracking-wide">
-                    Oral Cancer Screening & Triage Platform
+                    Oral Health & Mouth Cancer Screening
                   </p>
                 </div>
               </button>
 
-              {/* Primary Navigation Links matching screenshot */}
+              {/* Primary Navigation Links: ONLY Find Doctors, Video Consult, Lab Tests, Surgeries */}
               <nav className="hidden md:flex items-center gap-1 text-[13px] font-bold text-[#414146] ml-4">
                 <button
                   onClick={() => onNavigate('find-specialist')}
@@ -94,15 +94,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                   }`}
                 >
                   Video Consult
-                </button>
-
-                <button
-                  onClick={() => onNavigate('medicines')}
-                  className={`px-3 py-2 rounded-md transition-all relative ${
-                    currentPage === 'medicines' ? 'text-[#199fd9] border-b-2 border-[#14bef0] pb-1.5' : 'hover:text-[#199fd9]'
-                  }`}
-                >
-                  Medicines
                 </button>
 
                 <button

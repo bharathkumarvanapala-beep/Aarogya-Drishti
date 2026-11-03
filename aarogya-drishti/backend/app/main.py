@@ -7,11 +7,119 @@ import uuid
 import datetime
 import os
 import sys
+from pathlib import Path
 
-PORT = 8000
-DB_PATH = "/Users/johnd/Downloads/hio/aarogya-drishti/database/aarogya_drishti.db"
+BASE_DIR = Path(__file__).resolve().parents[2]
+PORT = int(os.environ.get('AROGYA_DRISHTI_PORT', '8000'))
+DB_PATH = os.environ.get('AROGYA_DRISHTI_DB_PATH', str(BASE_DIR / 'database' / 'aarogya_drishti.db'))
+
+
+def ensure_database() -> None:
+    db_dir = Path(DB_PATH).resolve().parent
+    db_dir.mkdir(parents=True, exist_ok=True)
+
+    conn = sqlite3.connect(DB_PATH)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id TEXT PRIMARY KEY,
+            email TEXT UNIQUE,
+            password_hash TEXT,
+            full_name TEXT,
+            role TEXT,
+            phone TEXT,
+            district TEXT,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS screenings (
+            id TEXT PRIMARY KEY,
+            patient_name TEXT,
+            patient_email TEXT,
+            age TEXT,
+            gender TEXT,
+            tobacco_history TEXT,
+            symptoms_duration TEXT,
+            image_url TEXT,
+            category TEXT,
+            risk_score REAL,
+            confidence REAL,
+            findings TEXT,
+            recommendations TEXT,
+            clinician_review_status TEXT DEFAULT 'Pending Review',
+            clinician_notes TEXT,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS appointments (
+            id TEXT PRIMARY KEY,
+            doctor_id TEXT,
+            doctor_name TEXT,
+            patient_name TEXT,
+            patient_phone TEXT,
+            facility TEXT,
+            appointment_date TEXT,
+            time_slot TEXT,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS consultations (
+            id TEXT PRIMARY KEY,
+            specialty TEXT,
+            doctor_name TEXT,
+            patient_name TEXT,
+            patient_phone TEXT,
+            consult_type TEXT,
+            status TEXT,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS medicine_orders (
+            id TEXT PRIMARY KEY,
+            patient_name TEXT,
+            patient_phone TEXT,
+            delivery_address TEXT,
+            items_json TEXT,
+            total_amount REAL,
+            payment_mode TEXT,
+            status TEXT,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS lab_bookings (
+            id TEXT PRIMARY KEY,
+            test_id TEXT,
+            test_name TEXT,
+            patient_name TEXT,
+            patient_phone TEXT,
+            collection_address TEXT,
+            collection_slot TEXT,
+            price REAL,
+            status TEXT,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS surgery_inquiries (
+            id TEXT PRIMARY KEY,
+            procedure_name TEXT,
+            patient_name TEXT,
+            mobile_number TEXT,
+            city_hub TEXT,
+            status TEXT,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+    conn.commit()
+    conn.close()
+
 
 def get_db():
+    ensure_database()
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
@@ -561,4 +669,5 @@ def run_server():
         httpd.server_close()
 
 if __name__ == '__main__':
+    ensure_database()
     run_server()

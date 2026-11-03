@@ -14,7 +14,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language }) => {
   return (
     <footer className="bg-[#28328c] text-white pt-14 pb-8 border-t border-[#1b2361] font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Top Disclaimer Highlight */}
         <div className="bg-[#1e2570] rounded-xl p-5 border border-white/15 mb-10">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -40,7 +40,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language }) => {
 
         {/* 5-Column Directory Layout */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 pb-10 border-b border-white/10 text-xs">
-          
+
           {/* Col 1: Aarogya Drishti */}
           <div>
             <h4 className="font-bold text-white text-sm mb-3">Aarogya Drishti</h4>

@@ -1,10 +1,13 @@
 /**
  * Aarogya Drishti API Service Client
- * Connects frontend pages to backend REST API (http://127.0.0.1:8000/api/v1)
- * with robust offline fallback so the application is 100% resilient.
+ * Connects frontend pages to backend REST API with a resilient fallback.
  */
 
-const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api/v1';
+const API_BASE_URL = 
+  (import.meta as any).env?.VITE_API_BASE_URL ||
+  (typeof window !== 'undefined' && window.location.hostname !== 'localhost'
+    ? `${window.location.origin}/api/v1`
+    : 'http://127.0.0.1:8000/api/v1');
 
 export interface ScreeningPayload {
   patient_name?: string;
@@ -68,7 +71,8 @@ export interface SurgeryInquiryPayload {
 
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`;
-  const token = localStorage.getItem('ad_auth_token');
+  const storage = typeof window !== 'undefined' ? window.localStorage : null;
+  const token = storage ? storage.getItem('ad_auth_token') : null;
 
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
@@ -144,7 +148,11 @@ export const api = {
 
   async getScreenings(params: { patient_email?: string; review_status?: string } = {}) {
     try {
-      const q = new URLSearchParams(params as any).toString();
+      const queryParams = new URLSearchParams();
+      Object.entries(params).forEach(([key, value]) => {
+        if (value) queryParams.set(key, value);
+      });
+      const q = queryParams.toString();
       return await request<{ screenings: any[]; count: number }>(`/screenings${q ? '?' + q : ''}`);
     } catch {
       return { screenings: [], count: 0 };

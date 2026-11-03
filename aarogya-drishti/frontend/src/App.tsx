@@ -20,6 +20,7 @@ import { TermsPage } from './pages/TermsPage';
 import { ContactPage } from './pages/ContactPage';
 import { SignInPage } from './pages/SignInPage';
 import { RegisterPage } from './pages/RegisterPage';
+import { AnatomyAtlasPage } from './pages/AnatomyAtlasPage';
 
 // Specialized Clinical & Role Dashboards
 import { PatientDashboardPage } from './pages/PatientDashboardPage';
@@ -68,6 +69,7 @@ export const App: React.FC = () => {
         {currentPage === 'contact' && <ContactPage onNavigate={handleNavigate} language={language} />}
         {currentPage === 'signin' && <SignInPage onNavigate={handleNavigate} language={language} />}
         {currentPage === 'register' && <RegisterPage onNavigate={handleNavigate} language={language} />}
+        {currentPage === 'anatomy-atlas' && <AnatomyAtlasPage onNavigate={handleNavigate} language={language} />}
 
         {/* Dashboards */}
         {currentPage === 'patient-dashboard' && <PatientDashboardPage onNavigate={handleNavigate} language={language} />}

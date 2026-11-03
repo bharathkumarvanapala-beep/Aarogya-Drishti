@@ -21,6 +21,8 @@ import {
   Building2, 
   Lock, 
   Sparkles,
+  Upload,
+  RotateCcw,
   MapPin,
   Video,
   FlaskConical,
@@ -123,30 +125,30 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
       {/* 1. Mandatory Clinical Disclaimer Banner */}
       <DisclaimerBanner languageNotice={t.disclaimerNotice} />
 
-      {/* Top Banner with Practo Design Token Inspector Trigger */}
+      {/* Top Banner */}
       <div className="bg-[#f0f0f5] border-b border-[#e0e0e5] py-2 px-4 sm:px-8 text-xs flex justify-between items-center text-[#414146]">
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-[#199fd9]">Aarogya Drishti Connected Healthcare Architecture</span>
+          <span className="font-semibold text-[#087F8C]">Aarogya Drishti — Oral Health & Mouth Cancer Screening</span>
           <span className="hidden sm:inline text-[#737382]">| WCAG 2.2 AA Verified Medical Interface</span>
         </div>
         <button
           type="button"
           onClick={() => setShowDsModal(true)}
-          className="inline-flex items-center gap-1.5 font-bold text-[#199fd9] hover:underline"
+          className="inline-flex items-center gap-1.5 font-bold text-[#087F8C] hover:underline"
         >
           <Palette className="w-3.5 h-3.5" />
           <span>Design Tokens Inspector</span>
         </button>
       </div>
 
-      {/* 2. Practo Authentic Hero Section with Omni-Searchbox */}
+      {/* 2. Authentic Hero Section with Omni-Searchbox */}
       <section className="bg-gradient-to-b from-[#f0f0f5]/70 via-white to-[#F5FAFA] pt-10 pb-16 border-b border-[#e0e0e5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-4xl mx-auto text-center space-y-4 mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#e0e0e5] shadow-xs text-xs font-semibold text-[#199fd9]">
-              <ShieldCheck className="w-4 h-4 text-[#199fd9]" />
-              <span>Aarogya Drishti Healthcare Node</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#e0e0e5] shadow-xs text-xs font-semibold text-[#087F8C]">
+              <ShieldCheck className="w-4 h-4 text-[#087F8C]" />
+              <span>Aarogya Drishti Clinical Screening Node</span>
             </div>
 
             {/* Exact hero heading required */}
@@ -224,22 +226,38 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
               ))}
             </div>
 
-            {/* Hero Action CTAs */}
-            <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Hero Action CTAs matching Master Prompt */}
+            <div className="pt-6 flex flex-wrap items-center justify-center gap-3">
               <button
                 onClick={() => onNavigate('screening')}
-                className="px-6 py-3 bg-[#199fd9] hover:bg-[#1589bb] text-white font-bold text-sm rounded shadow-sm hover:shadow transition-all flex items-center gap-2"
+                className="px-6 py-3 bg-[#087F8C] hover:bg-[#075B66] text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition-all flex items-center gap-2"
               >
-                <ShieldCheck className="w-4 h-4 text-white" />
+                <Camera className="w-4 h-4 text-white" />
                 <span>{t.hero.primaryBtn}</span>
               </button>
 
               <button
-                onClick={() => onNavigate('warning-signs')}
-                className="px-6 py-3 bg-white border border-[#b4b4be] hover:border-[#787887] text-[#414146] font-bold text-sm rounded hover:bg-[#f0f0f5] transition-all flex items-center gap-2"
+                onClick={() => onNavigate('screening')}
+                className="px-6 py-3 bg-[#199fd9] hover:bg-[#1589bb] text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition-all flex items-center gap-2"
               >
-                <AlertTriangle className="w-4 h-4 text-[#f59e0b]" />
+                <Upload className="w-4 h-4 text-white" />
                 <span>{t.hero.secondaryBtn}</span>
+              </button>
+
+              <button
+                onClick={() => onNavigate('anatomy-atlas')}
+                className="px-5 py-3 bg-[#18313B] hover:bg-[#224452] text-white font-bold text-sm rounded-xl shadow-sm transition-all flex items-center gap-2"
+              >
+                <RotateCcw className="w-4 h-4 text-amber-300" />
+                <span>3D Anatomy Atlas (9 Organs)</span>
+              </button>
+
+              <button
+                onClick={() => onNavigate('warning-signs')}
+                className="px-5 py-3 bg-white border border-[#b4b4be] hover:border-[#787887] text-[#414146] font-bold text-sm rounded-xl hover:bg-[#f0f0f5] transition-all flex items-center gap-2"
+              >
+                <AlertTriangle className="w-4 h-4 text-amber-500" />
+                <span>Warning Signs</span>
               </button>
             </div>
 

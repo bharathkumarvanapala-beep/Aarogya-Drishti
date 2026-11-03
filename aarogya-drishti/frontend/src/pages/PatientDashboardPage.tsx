@@ -1,19 +1,19 @@
 import { api } from '../services/api';
 import React, { useState, useEffect } from 'react';
-import { 
-  User, 
-  ShieldCheck, 
-  Calendar, 
-  FileText, 
-  Download, 
-  ArrowRight, 
-  Clock, 
-  Trash2, 
-  Globe, 
-  Bell, 
-  AlertTriangle, 
-  CheckCircle2, 
-  Eye, 
+import {
+  User,
+  ShieldCheck,
+  Calendar,
+  FileText,
+  Download,
+  ArrowRight,
+  Clock,
+  Trash2,
+  Globe,
+  Bell,
+  AlertTriangle,
+  CheckCircle2,
+  Eye,
   RefreshCw,
   Stethoscope
 } from 'lucide-react';
@@ -77,7 +77,7 @@ export const PatientDashboardPage: React.FC<PatientDashboardPageProps> = ({ onNa
         }));
         setRecords(mapped);
       }
-    }).catch(() => {});
+    }).catch(() => { });
   }, []);
 
   return (
@@ -88,7 +88,7 @@ export const PatientDashboardPage: React.FC<PatientDashboardPageProps> = ({ onNa
       <section className="bg-white border-b border-[#DCE8E9] py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            
+
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#087F8C] to-[#075B66] text-white flex items-center justify-center font-bold text-xl shadow-sm">
                 <User className="w-7 h-7" />
@@ -123,7 +123,7 @@ export const PatientDashboardPage: React.FC<PatientDashboardPageProps> = ({ onNa
 
       {/* Main Dashboard Grid */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-8">
-        
+
         {/* Metric Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <Card className="p-5 border-l-4 border-l-[#087F8C]">
@@ -223,7 +223,7 @@ export const PatientDashboardPage: React.FC<PatientDashboardPageProps> = ({ onNa
 
         {/* Privacy & Account Settings */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
+
           {/* Preferences */}
           <Card className="p-6 space-y-4">
             <h3 className="font-bold text-base text-[#18313B] flex items-center gap-2">
