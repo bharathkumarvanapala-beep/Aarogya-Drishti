@@ -2,6 +2,7 @@ export type Language = 'en' | 'te' | 'hi';
 
 export type PageId =
   | 'home'
+  | 'presentation'
   | 'surgeries'
   | 'medicines'
   | 'lab-tests'

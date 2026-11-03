@@ -126,18 +126,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
       <DisclaimerBanner languageNotice={t.disclaimerNotice} />
 
       {/* Top Banner */}
-      <div className="bg-[#f0f0f5] border-b border-[#e0e0e5] py-2 px-4 sm:px-8 text-xs flex justify-between items-center text-[#414146]">
-        <div className="flex items-center gap-2">
-          <span className="font-semibold text-[#087F8C]">Aarogya Drishti — Oral Health & Mouth Cancer Screening</span>
-          <span className="hidden sm:inline text-[#737382]">| WCAG 2.2 AA Verified Medical Interface</span>
+      <div className="bg-[#f0f0f5] border-b border-[#e0e0e5] py-2 px-3 sm:px-8 text-xs flex justify-between items-center text-[#414146] gap-2">
+        <div className="flex items-center gap-2 truncate">
+          <span className="font-semibold text-[#087F8C] truncate">Aarogya Drishti — Oral Health & Mouth Cancer Screening</span>
+          <span className="hidden sm:inline text-[#737382]">| WCAG 2.2 AA Verified</span>
         </div>
         <button
           type="button"
           onClick={() => setShowDsModal(true)}
-          className="inline-flex items-center gap-1.5 font-bold text-[#087F8C] hover:underline"
+          className="inline-flex items-center gap-1.5 font-bold text-[#087F8C] hover:underline shrink-0"
         >
           <Palette className="w-3.5 h-3.5" />
-          <span>Design Tokens Inspector</span>
+          <span className="hidden xs:inline sm:inline">Design Tokens</span>
+          <span className="xs:hidden sm:hidden">Tokens</span>
         </button>
       </div>
 
@@ -195,7 +196,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
               {/* Practo Search Button */}
               <button
                 type="submit"
-                className="practo-btn-primary shrink-0 sm:self-stretch"
+                className="practo-btn-primary shrink-0 w-full sm:w-auto sm:self-stretch"
               >
                 <span>Search</span>
                 <ArrowRight className="w-3.5 h-3.5" />

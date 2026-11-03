@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd aarogya-drishti/frontend && npm install && npm run build",
+  "outputDirectory": "aarogya-drishti/frontend/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

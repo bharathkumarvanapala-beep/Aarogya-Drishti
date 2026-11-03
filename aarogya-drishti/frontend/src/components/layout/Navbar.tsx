@@ -67,16 +67,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <ShieldCheck className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <span className="text-xl font-black text-[#087F8C] tracking-tight font-heading">
+                  <span className="text-base sm:text-xl font-black text-[#087F8C] tracking-tight font-heading block leading-tight">
                     Aarogya Drishti
                   </span>
-                  <p className="text-[10px] text-[#787887] font-semibold tracking-wide">
+                  <p className="text-[9px] sm:text-[10px] text-[#787887] font-semibold tracking-wide hidden sm:block">
                     Oral Health & Mouth Cancer Screening
                   </p>
                 </div>
               </button>
 
-              {/* Primary Navigation Links: ONLY Find Doctors, Video Consult, Lab Tests, Surgeries */}
+              {/* Primary Navigation Links */}
               <nav className="hidden md:flex items-center gap-1 text-[13px] font-bold text-[#414146] ml-4">
                 <button
                   onClick={() => onNavigate('find-specialist')}
@@ -117,13 +117,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Right Navigation Actions */}
-            <div className="flex items-center gap-3 text-[13px] font-semibold text-[#787887]">
+            <div className="flex items-center gap-2 sm:gap-3 text-[13px] font-semibold text-[#787887]">
               {/* Login / Signup Button */}
               <button
                 onClick={() => onNavigate('signin')}
-                className="px-4 py-2 border border-[#b4b4be] rounded hover:border-[#787887] text-[#414146] font-bold text-xs hover:bg-[#f0f0f5] transition-all"
+                className="px-3 sm:px-4 py-1.5 sm:py-2 border border-[#b4b4be] rounded hover:border-[#787887] text-[#414146] font-bold text-xs hover:bg-[#f0f0f5] transition-all"
               >
-                Login / Signup
+                Login
               </button>
             </div>
 
