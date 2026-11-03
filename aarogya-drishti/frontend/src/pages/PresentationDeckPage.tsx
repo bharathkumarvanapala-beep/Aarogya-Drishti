@@ -328,7 +328,7 @@ export const PresentationDeckPage: React.FC<PresentationDeckPageProps> = ({ onNa
           {[
             {
               tier: 'Frontend Web Tier',
-              port: 'Port: 5174',
+              port: 'Port: 5173',
               tech: 'React 18 + Vite + Tailwind CSS',
               items: ['12 fully responsive pages', 'Multilingual i18n switcher', 'Client-side photo quality pre-flight checks', 'Mobile touch & desktop support']
             },
@@ -479,10 +479,10 @@ export const PresentationDeckPage: React.FC<PresentationDeckPageProps> = ({ onNa
               <h4>Port Allocation & Isolation</h4>
             </div>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
-              <li><strong>Frontend:</strong> <code>http://localhost:5174</code> (Clean isolated port)</li>
+              <li><strong>Frontend:</strong> <code>http://localhost:5173</code> (Default port)</li>
               <li><strong>Backend API:</strong> <code>http://localhost:8000/api/v1</code></li>
               <li><strong>AI Service:</strong> <code>http://localhost:8001/api/v1</code></li>
-              <li><strong>Wi-Fi Mobile Testing:</strong> <code>http://192.168.1.41:5174</code></li>
+              <li><strong>Wi-Fi Mobile Testing:</strong> <code>http://192.168.1.41:5173</code></li>
             </ul>
           </div>
         </div>
